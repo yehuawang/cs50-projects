@@ -1,0 +1,32 @@
+1. According to Spotify, each aura color represents:
+    Purple: passionate
+    Green: calm
+    Pink: hopeless romatics
+    Orange: rebellious, high-energy
+    Yellow: focus, motivation, self-improvement
+    Blue: wistful, slower tempo
+
+    One way I will propose to calculate the aura colors as follows (based on my own opinion and understanding):
+
+        if AVG(energy > 0.5) AND AVG(valence > 0.5) AND AVG(danceability < 0.5):
+                Yellow
+        if AVG(energy > 0.5) AND AVG(valence < 0.5) AND AVG(danceability > 0.5):
+                Orange
+        if AVG(energy > 0.5) AND AVG(valence > 0.5) AND AVG(danceability > 0.5):
+                Purple
+        if AVG(energy < 0.5) AND AVG(valence > 0.5) AND AVG(danceability < 0.5):
+                Green
+        if AVG(energy < 0.5) AND AVG(valence > 0.5) AND AVG(danceability < 0.5):
+                Pink
+        if AVG(energy < 0.5) AND AVG(valence < 0.5) AND AVG(danceability < 0.5):
+                Blue
+
+        The AVG(energy) is 0.65906,
+        The AVG(valence) is 0.484443,
+        The AVG(danceability) is 0.71646
+
+        so according to my categorization, the audio aura will be ORANGE.
+
+2. What I calculated may not represents what the user's aura is, because by some value, say the valence, is very close to middle point of 0.5, and this seems to not be very negative, therefore the categorization of ORANGE may be worng.
+    A better way could be to also give aura representation on middle point value, where each color has a "strength", and is based on a non-linear function of the 3 key values (energy, valence, danceability).
+    After calculating the "strength" of each color on their non-linear functions, we could select the color with the highest "strength" to be the audio aura of the user.
